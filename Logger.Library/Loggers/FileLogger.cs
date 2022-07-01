@@ -17,14 +17,14 @@ namespace Logger.Library.Loggers
         }
 
         /// <summary>
-        /// Запись логов в файл.
+        /// Запись логов в файл. 
         /// </summary>
         /// <param name="type"></param>
         /// <param name="message"></param>
         public override void Log(LogType type, string message)
         {
             // Реализация не производительная
-            using (var fileWriter = new StreamWriter(_file, true))
+            using (var fileWriter = File.AppendText(_file))
             {
                 fileWriter.WriteLine($"{DateTime.Now} {type}: {message}");
             }
